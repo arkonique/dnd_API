@@ -15,7 +15,7 @@ class UserModel extends Database
 
     public function addUsers($data)
     {
-        return $this->executeStatement("ISERT INTO USERS (username,password,name,token,dmcode) VALUES (?,?,?,?,?)",$data);
+        return $this->executeStatement("INSERT into users (username,password,name,token,dmcode) values (?,?,?,?,?)",$data);
     }
 
 }

@@ -22,6 +22,7 @@
 
 
   // get list of users
+  
   fetch('http://localhost/dnd_api/index.php/user/list').then((data) => {
     return (data.json()); // JSON data parsed by `data.json()` call
   }).then(post => {console.log(post)});
@@ -30,8 +31,16 @@
   postData('http://localhost/dnd_api/index.php/user/get',{u: "ark",p: "qwer1234"}).then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
-
   
+
+  ////////// WARNING /////////////////////// This will blow up your table so just be careful
+  
+  /*postData('http://localhost/dnd_api/index.php/user/add',{data:['aaa','abfg234','AAA battery','bej34erkjvs48kjd932','AF321']}).then((data) => {
+    console.log(data); // JSON data parsed by `data.json()` call
+  });
+  */
+  
+
 
 </script>
 </body>

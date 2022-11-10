@@ -4,7 +4,6 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
 $json = file_get_contents('php://input');
 $array=json_decode($json,true);
-
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 if (strtoupper($requestMethod) == 'OPTIONS'){
     header('Access-control-allow-origin: http://localhost:3000');

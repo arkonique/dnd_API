@@ -33,7 +33,6 @@ class Database
     {
         try {
             $stmt = $this->connection->prepare( $query );
- 
             if($stmt === false) {
                 throw New Exception("Unable to do prepared statement: " . $query);
             }
