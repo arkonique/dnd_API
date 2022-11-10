@@ -1,0 +1,4 @@
+Header add Access-Control-Allow-Methods "GET,POST,OPTIONS,DELETE,PUT"
+Header add Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token"
+Header add Access-Control-Expose-Headers "Content-Length, X-JSON"
+Header add Access-Control-Max-Age 86400
