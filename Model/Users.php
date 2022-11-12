@@ -21,9 +21,9 @@ class UserModel extends Database
         }
     }
 
-    public function listUsers()
+    public function listUsers($col)
     {
-        return $this->select("SELECT username FROM ".$this->table);
+        return $this->select("SELECT ".$col." FROM ".$this->table);
     }
 
     public function getSalt($u)

@@ -49,7 +49,7 @@ class UserController extends BaseController
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $userModel = new UserModel('users');
-                $arrUsers = $userModel->listUsers();
+                $arrUsers = $userModel->listUsers('username');
                 $arrUsers=array_map(function($v){return $v['username'];},$arrUsers); // convert returned objects into one list
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {

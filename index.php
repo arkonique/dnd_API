@@ -15,6 +15,12 @@ else {
         $strMethodName = $uri[4].'Action';
         $objFeedController->{$strMethodName}($array);
     }
+    elseif ((isset($uri[3]) && $uri[3] == 'dm') && isset($uri[4])){
+        require PROJECT_ROOT_PATH."/Controller/Api/DmController.php";
+        $objFeedController = new DmController();
+        $strMethodName = $uri[4].'Action';
+        $objFeedController->{$strMethodName}($array);
+    }
     else {
         header("HTTP/1.1 404 Not Found");
         exit();

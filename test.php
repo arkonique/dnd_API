@@ -27,9 +27,7 @@
   }).then(post => {console.log(post)});
   
   //get one user
-  postData('http://localhost/dnd_api/index.php/user/salt',{
-    u: "rm",
-  }).then((data) => {
+  postData('http://localhost/dnd_api/index.php/dm/codes').then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
   
