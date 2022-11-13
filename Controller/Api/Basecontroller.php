@@ -52,6 +52,7 @@ class BaseController
         echo $data;
         exit;
     }
+
 }
 
 ?>

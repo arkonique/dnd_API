@@ -3,7 +3,7 @@
 class DmController extends BaseController
 {
     /**
-     * /dm/codes
+     * "/dm/codes" endpoint - list all current dm codes
      */
     public function codesAction(){
         $strErrorDesc = '';

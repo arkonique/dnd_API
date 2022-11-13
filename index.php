@@ -9,16 +9,22 @@ if (strtoupper($requestMethod) == 'OPTIONS'){
     header('Access-control-allow-origin: http://localhost:3000');
 }
 else {
-    if ((isset($uri[3]) && $uri[3] == 'user') && isset($uri[4])) {
+    if ((isset($uri[3]) && $uri[3] == 'user') && isset($uri[4])) { //user gateway
         require PROJECT_ROOT_PATH."/Controller/Api/UserController.php";
         $objFeedController = new UserController();
         $strMethodName = $uri[4].'Action';
         $objFeedController->{$strMethodName}($array);
     }
-    elseif ((isset($uri[3]) && $uri[3] == 'dm') && isset($uri[4])){
-        require PROJECT_ROOT_PATH."/Controller/Api/DmController.php";
+    elseif ((isset($uri[3]) && $uri[3] == 'dm') && isset($uri[4])){ //dm gateway
+        require PROJECT_ROOT_PATH."/Controller/Api/Dmcontroller.php";
         $objFeedController = new DmController();
         $strMethodName = $uri[4].'Action';
+        $objFeedController->{$strMethodName}($array);
+    }
+    elseif ((isset($uri[3]) && $uri[3] == 'session') && isset($uri[4])) {  // session gateway
+        require PROJECT_ROOT_PATH."/Controller/Api/Sessioncontroller.php";
+        $objFeedController = new SessionController();
+        $strMethodName = $uri[4].'Session';
         $objFeedController->{$strMethodName}($array);
     }
     else {

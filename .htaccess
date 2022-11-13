@@ -2,3 +2,12 @@ Header add Access-Control-Allow-Methods "GET,POST,OPTIONS,DELETE,PUT"
 Header add Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token"
 Header add Access-Control-Expose-Headers "Content-Length, X-JSON"
 Header add Access-Control-Max-Age 86400
+
+RewriteEngine on
+# If the request sent by the browser includes index.php...
+RewriteCond %{THE_REQUEST} index\.php
+# forbid access (403)
+RewriteRule ^. - [R=404,L]
+
+# Then you just need a generic rule to rewrite /mysite into index.php
+RewriteRule ^accessnode index.php [QSA,L]

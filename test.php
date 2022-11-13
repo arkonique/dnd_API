@@ -12,6 +12,7 @@
     async function postData(url = '', data = {}) {
     const response = await fetch(url, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -21,15 +22,17 @@
   }
 
 
-  // get list of users
-  fetch('http://localhost/dnd_api/index.php/user/list').then((data) => {
-    return (data.json()); // JSON data parsed by `data.json()` call
-  }).then(post => {console.log(post)});
-  
   //get one user
-  postData('http://localhost/dnd_api/index.php/dm/codes').then((data) => {
+  postData('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
+  
+  // get list of users
+  fetch('http://localhost/dnd_api/accessnode/session/get',{
+    credentials: 'include'
+  }).then((data) => {
+    return (data.json()); // JSON data parsed by `data.json()` call
+  }).then(post => {console.log(post)});
   
   /*
   
