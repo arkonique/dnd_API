@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<script>
+<script type="text/javascript" async>
     async function postData(url = '', data = {}) {
     const response = await fetch(url, {
       method: 'POST',
@@ -21,11 +21,70 @@
     return response.json();
   }
 
+  function ajaxPost(url='',data={}) {
+    const body = JSON.stringify(data);
+    return new Promise((resolve,reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open('POST', url, true)
+      xhr.setRequestHeader('Content-type', 'application/json')
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject({
+            status: xhr.status,
+            statusText: xhr.statusText
+          });
+        }
+      }
+      xhr.onerror = () => {
+      reject({
+        status: xhr.status,
+        statusText: xhr.statusText
+      })
+    }
+      xhr.send(body);
+    })
+  }
+
+
+  function ajaxGet(url='',data={}) {
+    const body = JSON.stringify(data);
+    return new Promise((resolve,reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', url, true)
+      xhr.setRequestHeader('Content-type', 'application/json')
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject({
+            status: xhr.status,
+            statusText: xhr.statusText
+          });
+        }
+      }
+      xhr.onerror = () => {
+      reject({
+        status: xhr.status,
+        statusText: xhr.statusText
+      })
+    }
+      xhr.send(body);
+    })
+  }
+
+
+  ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((response) => {console.log(JSON.parse(response))});
+  ajaxGet('http://localhost/dnd_api/accessnode/session/get').then((response) => {console.log(JSON.parse(response))});
+ //const resp = await ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"})
+  //console.log(resp);
+
 
   //get one user
-  postData('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
+  //postData('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((data) => {
+  //  console.log(data); // JSON data parsed by `data.json()` call
+  //});
   
   // get list of users
   fetch('http://localhost/dnd_api/accessnode/session/get',{

@@ -44,7 +44,6 @@
             if (strtoupper($requestMethod) == 'GET') {
                 try {
                     session_start();
-                    print json_encode($_SESSION);
                     $responseData = json_encode((isset($_SESSION["username"])) ? $_SESSION["username"]:"No ongoing session");
                 } catch (Error $e) {
                     $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
