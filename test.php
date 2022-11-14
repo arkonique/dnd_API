@@ -27,6 +27,7 @@
       const xhr = new XMLHttpRequest()
       xhr.open('POST', url, true)
       xhr.setRequestHeader('Content-type', 'application/json')
+      xhr.withCredentials = true
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve(xhr.response);
@@ -54,6 +55,7 @@
       const xhr = new XMLHttpRequest()
       xhr.open('GET', url, true)
       xhr.setRequestHeader('Content-type', 'application/json')
+      xhr.withCredentials = true
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve(xhr.response);
@@ -75,8 +77,11 @@
   }
 
 
-  ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((response) => {console.log(JSON.parse(response))});
-  ajaxGet('http://localhost/dnd_api/accessnode/session/get').then((response) => {console.log(JSON.parse(response))});
+  ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((response) => {
+    console.log(JSON.parse(response))
+    ajaxGet('http://localhost/dnd_api/accessnode/session/get').then((response) => {console.log(JSON.parse(response))});
+  });
+  
  //const resp = await ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"})
   //console.log(resp);
 
@@ -87,13 +92,14 @@
   //});
   
   // get list of users
+  /*
   fetch('http://localhost/dnd_api/accessnode/session/get',{
     credentials: 'include'
   }).then((data) => {
     return (data.json()); // JSON data parsed by `data.json()` call
   }).then(post => {console.log(post)});
   
-  /*
+  /* 
   
   
   ////////// WARNING /////////////////////// This will blow up your table so just be careful
