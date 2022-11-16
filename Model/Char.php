@@ -9,7 +9,7 @@ class Char extends Database{
     }
     // get all character personal details
     public function getData($token){
-        return $this->select("SELECT * FROM ".$this->table." WHERE token=?",$token)
+        return $this->select("SELECT * FROM ".$this->table." WHERE token=?",$token);
     }
     // get all character class details 
 
