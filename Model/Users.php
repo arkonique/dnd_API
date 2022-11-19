@@ -14,7 +14,7 @@ class UserModel extends Database
         $p2=substr($p2,10,-10);
         //echo "s=".$p2."\n p=".$p."\n";
         if ($p==$p2) {
-            return "match";
+            return $this->select("SELECT * FROM ".$this->table." WHERE username=?",[$u]);
         }
         else {
             return "nomatch";

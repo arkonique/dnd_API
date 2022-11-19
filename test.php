@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
 </head>
 <body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script type="text/javascript" async>
-    async function postData(url = '', data = {}) {
+
+  async function postData(url = '', data = {}) {
     const response = await fetch(url, {
       method: 'POST',
       credentials: 'include',
@@ -79,29 +80,32 @@
   }
 
 
-  ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((response) => {
-    console.log(JSON.parse(response))
-    ajaxGet('http://localhost/dnd_api/accessnode/session/get').then((response) => {console.log(JSON.parse(response))});
-  });
+
+  
+
+  //ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((response) => {
+  //  console.log(JSON.parse(response))
+  //  ajaxGet('http://localhost/dnd_api/accessnode/session/get').then((response) => {console.log(JSON.parse(response))});
+  //});
   
  //const resp = await ajaxPost('http://localhost/dnd_api/accessnode/session/set',{username:"rma"})
   //console.log(resp);
 
 
   //get one user
-  //postData('http://localhost/dnd_api/accessnode/session/set',{username:"rma"}).then((data) => {
-  //  console.log(data); // JSON data parsed by `data.json()` call
-  //});
+  postData('http://localhost/dnd_api/accessnode/characters/get',{token:"a1234sferds459ifs"}).then((data) => {
+    console.log(data); // JSON data parsed by `data.json()` call
+  });
   
   // get list of users
+  
   /*
-  fetch('http://localhost/dnd_api/accessnode/session/get',{
+  fetch('http://localhost/dnd_api/accessnode/user/list',{
     credentials: 'include'
   }).then((data) => {
     return (data.json()); // JSON data parsed by `data.json()` call
   }).then(post => {console.log(post)});
   
-  /* 
   
   
   ////////// WARNING /////////////////////// This will blow up your table so just be careful
