@@ -93,8 +93,8 @@
 
 
   //get one user
-  postData('http://localhost/dnd_api/accessnode/characters/get',{token:"a1234sferds459ifs"}).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
+  postData('http://localhost/dnd_api/accessnode/user/token',{token:"a1234sferds459ifs"}).then((data) => {
+    console.log(data[0].name); // JSON data parsed by `data.json()` call
   });
   
   // get list of users

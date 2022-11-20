@@ -27,9 +27,15 @@ else {
         $strMethodName = $uri[4].'Session';
         $objFeedController->{$strMethodName}($array);
     }
-    elseif ((isset($uri[3]) && $uri[3] == 'characters') && isset($uri[4])) {  // session gateway
+    elseif ((isset($uri[3]) && $uri[3] == 'characters') && isset($uri[4])) {  // characters gateway
         require PROJECT_ROOT_PATH."/Controller/Api/Charactercontroller.php";
         $objFeedController = new CharacterController();
+        $strMethodName = $uri[4].'Action';
+        $objFeedController->{$strMethodName}($array);
+    }
+    elseif ((isset($uri[3]) && $uri[3] == 'files') && isset($uri[4])) {  // files gateway
+        require PROJECT_ROOT_PATH."/Controller/Api/Filecontroller.php";
+        $objFeedController = new FileController();
         $strMethodName = $uri[4].'Action';
         $objFeedController->{$strMethodName}($array);
     }

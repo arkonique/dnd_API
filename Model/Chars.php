@@ -7,12 +7,16 @@ class CharacterModel extends Database{
     {
         parent::__construct();
     }
-    // get all character personal details
+    // get all characters for a specific user
     public function getData($token){
-        //echo "SELECT * FROM ".$this->table." WHERE token=?";
         return $this->select("SELECT * FROM ".$this->table." WHERE token=?",[$token]);
     }
-    // get all character class details 
+
+    // get a specific character
+    public function getChar($id){
+        return $this->select("SELECT * FROM ".$this->table." WHERE srno=?",[$id]);
+    }
+    // get all character class details
 
 
     // add new character (insert into all tables)

@@ -31,6 +31,11 @@ class UserModel extends Database
         return $this->select("SELECT salt FROM ".$this->table." where username=?",[$u]);
     }
 
+    public function getUserFromToken($t)
+    {
+        return $this->select("SELECT name FROM ".$this->table." where token=?",[$t]);
+    }
+
     public function addUsers($data)
     {
         return $this->executeStatement("INSERT into ".$this->table." (username,password,name,token,dmcode,salt) values (?,?,?,?,?,?)",$data);
